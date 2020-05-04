@@ -91,10 +91,10 @@ class TodoList extends Component {
             )
 
         return (
-            <div>
+            <div className="todolist-root">
                 <h1>Todo List</h1>
-                {todosBox}
                 <NewFormTodo handleSubmit={this.handleSubmit}/>
+                {todosBox}
             </div>
         )
     }
