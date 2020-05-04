@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
 
-import './style.css'
-
 import Todo from '../../Components/Todo';
+import TodayDate from '../../Components/Date';
 import NewFormTodo from '../../Components/NewFormTodo';
+import './style.css'
 
 class TodoList extends Component {
     
     constructor(props){
         super(props);
-        this.state = { todos: [] }
+        this.state = { todos: [], addMode: false }
+       
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.removeHandler = this.removeHandler.bind(this);
         this.editHandler = this.editHandler.bind(this);
+        this.openForm = this.openForm.bind(this);
     }
+
+    componentDidMount() {
+        window.setInterval(function () {
+           this.setState({ date : new Date()})
+        }.bind(this), 1000);
+    }
+
+    
 
     
     handleSubmit(data) {
         const { todos } = this.state;
         const todosCopy = [...todos, data];
-        
-        this.setState({todos: todosCopy})
+        this.setState({todos: todosCopy, addMode: false})
     }
 
     removeHandler(id) {
@@ -36,24 +45,17 @@ class TodoList extends Component {
         })
 
         this.setState({ todos : todosCopy})
-
     }
 
     editHandler(id) {
-
         const { todos } = this.state
         const todosCopy = todos;
 
-        todosCopy.forEach((todo, i) => {
-            if(todo.id === id ){
-                todo.editMode = true;
-            }
-            console.log(todo)
-
+        todosCopy.forEach((todo) => {
+            if (todo.id === id) todo.editMode = true;
         })
 
         this.setState({ todos : todosCopy})
-        
     }
 
     handleUpdate(data) {
@@ -69,14 +71,16 @@ class TodoList extends Component {
             return todo;
         });
 
-
         this.setState({ todos: updatedTodos})
+    }
 
+    openForm() {
+        this.setState({ addMode: !this.addMode})
     }
 
     render(){
-        const { todos } = this.state;
-
+        const { todos, date, addMode } = this.state;
+ 
         const todosBox = todos.map( todo => 
                 <Todo 
                     name = {todo.name} 
@@ -88,13 +92,16 @@ class TodoList extends Component {
                     editMode = {todo.editMode}
                     editTodo = {this.editHandler}
                 />
-            )
+            );
 
         return (
             <div className="todolist-root">
-                <h1>Todo List</h1>
-                <NewFormTodo handleSubmit={this.handleSubmit}/>
-                {todosBox}
+                <TodayDate date={date}/>
+                <div className="todolist-list">
+                    {todosBox}
+                </div>
+                {addMode &&  <NewFormTodo handleSubmit={this.handleSubmit}/>}
+                <button className="btn" onClick={this.openForm}></button>
             </div>
         )
     }

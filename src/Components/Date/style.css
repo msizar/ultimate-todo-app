@@ -1,0 +1,10 @@
+.todayDate-root {
+    display: -webkit-box;
+    display: flex;
+    font-size: 20px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    letter-spacing: 2px;
+    padding: 0 0 35px 0;
+    text-transform: uppercase;
+}

@@ -1,0 +1,28 @@
+.form-root {
+}
+
+.form {
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    margin: 40px 0px;
+}
+
+input {
+    border: 2px solid #ccc;
+    width: 60%;
+    padding: 12px;
+    transition: 100% 0.4s ease-in-out;
+    height: 15px;
+}
+
+.form-btnSave {
+    width: 20%;
+    padding: 14px;
+    background-color: #46be8b;
+    cursor: pointer;
+    color: white;
+    border: none
+
+}

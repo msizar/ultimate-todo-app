@@ -42,17 +42,19 @@ class NewFormTodo extends Component {
         const { name } = this.state;
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <label>Name: </label>
-                <input 
-                    id="todo-name"
-                    name="name"
-                    value={name}
-                    placeholder="Enter todo name"
-                    onChange={this.onChange}
-                />
-                <button>Enter</button>
-            </form>
+            <div className="form-root">
+                <form onSubmit={this.onSubmit} className="form">
+                    <input 
+                        id="todo-name"
+                        name="name"
+                        value={name}
+                        placeholder="Enter todo name"
+                        onChange={this.onChange}
+                    />
+                    <button className="form-btnSave">Enter</button>
+                </form>
+            </div>
+           
         )
     }
 }
