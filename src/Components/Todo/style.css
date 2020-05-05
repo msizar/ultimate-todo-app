@@ -37,7 +37,11 @@
 
 .todo-removeBtn button{
     background-color: #af0000;
-    border-radius: 10px;
-
+    border-radius: 20px;
+    width: unset;
+    height: unset;
+    padding: 3px 6px 5px 6px;
+    color: white;
+    font-weight: 900;
 }
 
