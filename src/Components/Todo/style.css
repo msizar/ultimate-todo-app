@@ -10,3 +10,34 @@
     margin: 10px;
     min-height: 100px;
 }
+
+.todo-item_inner {
+    width: 100%;
+}
+
+.todo-item {
+    width: 100%;
+}
+
+.todo-item_inner button {
+    width: 20%;
+    padding: 10px;
+    background-color: #46be8b;
+    cursor: pointer;
+    color: white;
+    border: none;
+    margin: 10px;
+}
+
+
+.todo-item_inner .todo-removeBtn {
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+.todo-removeBtn button{
+    background-color: #af0000;
+    border-radius: 10px;
+
+}
+
