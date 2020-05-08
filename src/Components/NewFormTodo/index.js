@@ -1,62 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid'
 
 import './style.css'
 
-class NewFormTodo extends Component {
+const NewFormTodo = ({ name :currentName, id, handleSubmit}) => {
+    const [name, setName] = useState('');
 
-    constructor(props){
-        super(props)
-
-        this.state = {
-            name:''
-        }
-
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-
-
-    componentDidMount() {
-        const { name, id } = this.props;
-        if(name) {
-            this.setState({name, id})
-        }
-    }
-
-    onChange(e) {
-        this.setState({[e.target.name]: e.target.value})
-    }
-
-    onSubmit(e) {
+    //Component did mount
+    useEffect(() => {
+        if(currentName) setName(currentName);
+    }, [currentName]);
+    
+    // submit form
+    const onSubmit = (e) =>  {
         e.preventDefault();
+        const data = { name, id: id ? id : uuid()}
 
-        const { handleSubmit, id } = this.props;
-        const data = {...this.state, id: id ? id : uuid()}
+        if(name === '') return;
 
         handleSubmit(data);
-        this.setState({name: ''})
+        setName('');
     }
 
-    render() {
-        const { name } = this.state;
+    // Change todo item name
+    function onChange (e) {
+        setName(e.target.value)
+    };
 
-        return (
-            <div className="form-root">
-                <form onSubmit={this.onSubmit} className="form">
-                    <input 
-                        id="todo-name"
-                        name="name"
-                        value={name}
-                        placeholder="Enter todo name"
-                        onChange={this.onChange}
-                    />
-                    <button className="form-btnSave">Enter</button>
-                </form>
-            </div>
-           
-        )
-    }
+    return (
+        <div className="form-root">
+            <form onSubmit={onSubmit} className="form">
+                <input 
+                    id="todo-name"
+                    name="name"
+                    minLength={2}
+                    value={name}
+                    placeholder="Enter todo name"
+                    onChange={onChange}
+                />
+                <button className="form-btnSave">Enter</button>
+            </form>
+        </div>
+    );
 }
-
 export default NewFormTodo;

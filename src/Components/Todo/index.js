@@ -1,24 +1,27 @@
 import React from 'react';
-import ClearIcon from '@material-ui/icons/Clear';
 
 import './style.css'
 import NewFormTodo from '../NewFormTodo';
 
+const Todo = ({isDone, toggleEditForm, updateTodo, data, deleteTodo }) => {
 
-const Todo = ({ editMode, id, removeTodo, isDone, editTodo, handleUpdate, name }) => {
+    const updateHandler = (data) => {
+        updateTodo(data)
+    }
+
     return (
         <div className='todo-container'>
             <div className="todo-item">
-                {editMode ?
-                    <NewFormTodo name={name} id={id} handleSubmit={handleUpdate} /> :
+                {data.editMode ?
+                    <NewFormTodo key={data.id} name={data.name} id={data.id} handleSubmit={updateHandler} /> :
                     <div className="todo-item_inner">
                         <div className="todo-removeBtn">
-                            <button onClick={() => removeTodo(id)}>X</button>
+                            <button onClick={() => deleteTodo(data.id)}>X</button>
                         </div>
-                        <h3>{name}</h3>
+                        <h3>{data.name}</h3>
                         <div className="todo-btns">
-                            <button onClick={() => removeTodo(id)}>done</button>
-                            <button onClick={() => editTodo(id)}>edit</button>
+                            <button onClick={() => deleteTodo(data.id)}>done</button>
+                            <button onClick={() => toggleEditForm (data)}>edit</button>
                         </div>
                     </div>
                 }

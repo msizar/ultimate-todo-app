@@ -9,20 +9,25 @@
     margin: 40px 0px;
 }
 
-input {
+.form-root input {
     border: 2px solid #ccc;
-    width: 60%;
-    padding: 12px;
-    transition: 100% 0.4s ease-in-out;
+    width: 70%;
+    padding: 15px;
     height: 15px;
+    font-size: 14px;
+}
+
+.form-root input:focus {
+    outline: #45be8b auto 3px;
 }
 
 .form-btnSave {
     width: 20%;
-    padding: 14px;
+    padding: 16px;
+    font-size: 14px;
     background-color: #46be8b;
     cursor: pointer;
     color: white;
-    border: none
+    border: none;
 
 }
