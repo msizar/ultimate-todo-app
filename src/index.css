@@ -9,6 +9,7 @@ body,html {
   background: #f0efe9;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 #root {
@@ -26,3 +27,6 @@ code {
     monospace;
   height: 100%;
 }
+
+
+

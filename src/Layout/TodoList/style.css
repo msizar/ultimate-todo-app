@@ -58,3 +58,56 @@
   outline: none;
 }
 
+
+
+
+@media only screen and (max-width: 600px) {
+  .todolist-root {
+    padding: 10% 5%;
+    text-align: center;
+  }
+
+  .todayDate-root {
+    display: block;
+    text-align: center;
+  }
+
+  .todolist-list {
+    max-height: 52%;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .form-btnSave {
+    width: unset;
+  }
+
+  .form-root input {
+    width: unset;
+    padding: 15px;
+    height: 13px;
+  }
+
+  .todayDate-root {
+    padding: 0px;
+  }
+
+  button {
+    background: white;
+  }
+
+  .todo-item_inner h3 {
+    font-size: 1.3em;
+    font-weight: 400;
+  }
+  
+  .todo-container {
+    min-height: 60px;
+  }
+
+}
+
+
+
