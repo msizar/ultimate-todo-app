@@ -1,7 +1,9 @@
 import React from 'react';
 import {StoreProvider, createStore } from 'easy-peasy';
+import Particles from 'react-particles-js'
 
 import myStore from './store';
+import particlesConfig from './helpers/particels';
 import TodoList from './Layout/TodoList';
 import './App.css';
 
@@ -12,6 +14,9 @@ function App() {
     <StoreProvider store={store}>
       <div className="App">
         <TodoList/>
+        <Particles 
+        params={particlesConfig} 
+      /> 
       </div>
     </StoreProvider>
   );
