@@ -10,7 +10,7 @@ export default {
 
     addTodo: action ((state, todo ) => {
         const newTodo = {...todo, todoInit}
-        state.todos = [...state.todos, newTodo]
+        state.todos.unshift(newTodo);
     }),
 
     deleteTodo: action((state, id) => {
