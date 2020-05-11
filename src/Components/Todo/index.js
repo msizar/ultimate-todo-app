@@ -2,8 +2,9 @@ import React from 'react';
 
 import './style.css'
 import NewFormTodo from '../NewFormTodo';
+import todos from '../../store/todos';
 
-const Todo = ({isDone, toggleEditForm, updateTodo, data, deleteTodo }) => {
+const Todo = ({toggleEditForm, updateTodo, data, deleteTodo, toogleIsDone }) => {
 
     const updateHandler = (data) => {
         updateTodo(data)
@@ -15,14 +16,19 @@ const Todo = ({isDone, toggleEditForm, updateTodo, data, deleteTodo }) => {
                 {data.editMode ?
                     <NewFormTodo key={data.id} name={data.name} id={data.id} handleSubmit={updateHandler} /> :
                     <div className="todo-item_inner">
-                        <div className="todo-removeBtn">
-                            <button onClick={() => deleteTodo(data.id)}>X</button>
-                        </div>
-                        <h3>{data.name}</h3>
-                        <div className="todo-btns">
-                            <button onClick={() => deleteTodo(data.id)}>done</button>
-                            <button onClick={() => toggleEditForm (data)}>edit</button>
-                        </div>
+                        <button onClick={() => toogleIsDone(data)}>
+                           <span className="material-icons todo-icon__done">{data.isDone ? 'check_circle': 'radio_button_unchecked' }</span>
+                        </button>
+
+                        <h3 className={data.isDone ? 'todo-done__checked' : 'todo-done__unchecked'}>{data.name}</h3>
+                        { !data.isDone && <div className="todo-btns">
+                            <button onClick={() => toggleEditForm (data)}>
+                            <span className="material-icons">edit</span>
+                            </button>
+                            <button onClick={() => deleteTodo(data.id)}>
+                                <span className="material-icons">delete</span>
+                            </button>
+                        </div>}
                     </div>
                 }
             </div>

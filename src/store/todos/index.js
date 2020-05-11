@@ -1,10 +1,16 @@
 import { action } from 'easy-peasy';
 
+const todoInit = {
+    isDone: false,
+    editMode: false,
+}
+
 export default {
     todos: [],
 
     addTodo: action ((state, todo ) => {
-        state.todos = [...state.todos, todo]
+        const newTodo = {...todo, todoInit}
+        state.todos = [...state.todos, newTodo]
     }),
 
     deleteTodo: action((state, id) => {

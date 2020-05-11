@@ -14,16 +14,16 @@ const NewFormTodo = ({ name :currentName, id, handleSubmit}) => {
     // submit form
     const onSubmit = (e) =>  {
         e.preventDefault();
-        const data = { name, id: id ? id : uuid()}
-
+        const todo = { name, id: id ? id : uuid()}
+        
         if(name === '') return;
-
-        handleSubmit(data);
+        
+        handleSubmit(todo);
         setName('');
     }
 
     // Change todo item name
-    function onChange (e) {
+    const onChange = (e) => {
         setName(e.target.value)
     };
 

@@ -6,42 +6,59 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
     box-shadow: 0 3px 11px rgba(0,0,0,0.1);
-    padding: 8px 20px;
+    padding: 10px;
     margin: 10px;
-    min-height: 100px;
+    min-height: 80px;
 }
 
 .todo-item_inner {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-item_inner h3 {
+    width: 100%;
+    font-size: 1.6em;
+    margin: 10px;
 }
 
 .todo-item {
     width: 100%;
 }
 
-.todo-item_inner button {
-    width: 20%;
-    padding: 10px;
-    background-color: #46be8b;
-    cursor: pointer;
-    color: white;
-    border: none;
-    margin: 10px;
+button:focus{
+    outline: none;
 }
 
+.todo-item_inner button {
+    padding: 0;
+    color: #46be8b;
+    cursor: pointer;
+    border: none;
+    margin: 5px;
+}
+
+.todo-icon__done {
+    font-size: 30px;
+    margin: 0px;
+    padding-top: 8px;
+}
 
 .todo-item_inner .todo-removeBtn {
     display: flex;
     flex-flow: row-reverse;
 }
 
-.todo-removeBtn button{
-    background-color: #af0000;
-    border-radius: 20px;
-    width: unset;
-    height: unset;
-    padding: 3px 6px 5px 6px;
-    color: white;
-    font-weight: 900;
+.todo-done__checked {
+    color: grey;
+    text-decoration-line: line-through;
 }
+
+.todo-done__unchecked {
+    color: black;
+    text-decoration-line: none;
+}
+
 

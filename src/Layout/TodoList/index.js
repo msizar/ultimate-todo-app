@@ -6,48 +6,48 @@ import TodayDate from '../../Components/Date';
 import NewFormTodo from '../../Components/NewFormTodo';
 import './style.css'
 
-
-
 const TodoList = () => {
     const todos = useStoreState(state => state.todos);
-    const [addMode, setAddMode ] = useState(false);
-    const [editMode, setEditMode ] = useState(false);
     const [date, setDate ] = useState( new Date());
 
     const addTodo = useStoreActions(action => action.addTodo);
     const updateTodo = useStoreActions(action => action.updateTodo);
     const deleteTodo = useStoreActions(action => action.deleteTodo);
 
-  
+    // Attach event for realtime updating
     window.setInterval(function () {
         setDate(new Date())
     }, 1000);
 
+    //Display Form
     const handleToggleEditForm = (data) => {
         const dataCopy = {...data};
         dataCopy.editMode = !dataCopy.editMode;
 
         updateTodo(dataCopy);
-        setEditMode(true);
     }
 
+    // Update a todo 
     const  handleUpdate = (data) => {
         updateTodo({...data, editMode: false});
     }
 
+    // delete a todo
     const handleDeleteTodo = (id) => {
         deleteTodo(id);
     }
 
-   const  openForm = () =>  {
-        setAddMode(!addMode)
-    }
-
+    // add a todo
     const handleAddToDo = (data) => {
         addTodo(data);
-        setAddMode(false)
     }
 
+    //Mark to do as complete
+    const handleToggleIsDone = (data) => {
+        updateTodo({...data, isDone: !data.isDone })
+    }
+
+    // todo items list display
     const todosBox = todos.map( todo => 
         <Todo 
             data = {todo} 
@@ -56,28 +56,21 @@ const TodoList = () => {
             deleteTodo = {handleDeleteTodo}
             toggleEditForm = {handleToggleEditForm}
             updateTodo = {handleUpdate}
+            toogleIsDone = {handleToggleIsDone}
         />
     );
 
     return (
         <div className="todolist-root">
             <TodayDate date={date}/>
+            <NewFormTodo handleSubmit={handleAddToDo}/>
+
             <div className="todolist-list">
                 {todosBox}
             </div>
-            {addMode &&  <NewFormTodo handleSubmit={handleAddToDo}/>}
-            <button className="btn" onClick={openForm}></button>
-            
-            <div className="wrapper">
-                <div className="icon-search-container" data-ic-class="search-trigger">
-                    <span className="fa fa-search"></span>
-                    <input className="search-input" type="text" data-ic-class="search-input" placeholder="Search"/>
-                    <span className="fa fa-times-circle" data-ic-class="search-clear"></span>
-                </div>
-            </div>
+         
         </div>
     )
-
 }
 
 export default TodoList;
