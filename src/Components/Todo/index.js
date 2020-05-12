@@ -2,7 +2,6 @@ import React from 'react';
 
 import './style.css'
 import NewFormTodo from '../NewFormTodo';
-import todos from '../../store/todos';
 
 const Todo = ({toggleEditForm, updateTodo, data, deleteTodo, toogleIsDone }) => {
 

@@ -1,3 +1,3 @@
 ## Ultimate Todo app
 
-A task tracking tool for daily activies 
+A task tracking tool for daily activitiees 
