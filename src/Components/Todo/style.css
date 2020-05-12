@@ -54,11 +54,12 @@ button:focus{
 .todo-done__checked {
     color: grey;
     text-decoration-line: line-through;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.75s;
 }
 
 .todo-done__unchecked {
     color: black;
-    text-decoration-line: none;
+    transition: text-decoration-line 0.2s ease-in-out;
+    transition-duration: 0.75s;
 }
-
-

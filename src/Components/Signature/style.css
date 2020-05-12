@@ -1,0 +1,23 @@
+.signature-root {
+    display: flex;
+    color: grey;
+    padding-top: 30px;
+}
+
+.signature-root a{
+    font-size: 12px;
+    padding-top: 5px;
+    color: grey;
+}
+
+
+.signature-root a:hover{
+    text-decoration: none;
+}
+
+.signature-root img{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+
